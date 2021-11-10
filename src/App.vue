@@ -43,43 +43,31 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import countries from './data/countries.json'
 import {ref, computed} from 'vue'
 
-export default {
-  setup() {
-    let searchTerm = ref('')
+let searchTerm = ref('')
 
-    const searchCountries = computed(() => {
-      if (searchTerm.value === '') {
-        return []
-      }
-
-      let matches = 0
-
-      return countries.filter(country => {
-        if (country.name.toLowerCase().includes(searchTerm.value.toLowerCase()) && matches < 10) {
-          matches++
-          return country
-        }
-      })
-    });
-
-    const selectCountry = (country) => {
-      selectedCountry.value = country
-      searchTerm.value = ''
-    }
-
-    let selectedCountry = ref('')
-
-    return {
-      countries,
-      searchTerm,
-      searchCountries,
-      selectCountry,
-      selectedCountry
-    }
+const searchCountries = computed(() => {
+  if (searchTerm.value === '') {
+    return []
   }
+
+  let matches = 0
+
+  return countries.filter(country => {
+    if (country.name.toLowerCase().includes(searchTerm.value.toLowerCase()) && matches < 10) {
+      matches++
+      return country
+    }
+  })
+});
+
+const selectCountry = (country) => {
+  selectedCountry.value = country
+  searchTerm.value = ''
 }
+
+let selectedCountry = ref('')
 </script>

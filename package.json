@@ -16,5 +16,11 @@
     "postcss": "^8.3.7",
     "tailwindcss": "^2.2.15",
     "vite": "^2.5.10"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "useTabs": true,
+    "tabWidth": 2,
+    "trailingComma": "es5"
   }
 }
